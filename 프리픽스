@@ -1,0 +1,34 @@
+
+const fs = require('node:fs');
+const path = require('node:path');
+
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { token} = require('./config.json');
+const wait = require('node:timers/promises').setTimeout;///딜레이 구문
+const { RESTJSONErrorCodes } = require('discord.js');
+const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent] });
+
+client.commands = new Collection();
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+// When the client is ready, run this code (only once)
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	client.commands.set(command.data.name, command);
+}
+client.once('ready', () => {
+  console.log('준비됨');
+});
+
+client.on('messageCreate', async (message) => { // When a message is created
+	if(message.content === '!ping') { // If the message content is "!ping"
+	  console.log('pong')
+	  message.reply('dd')
+	  // Send a message in the same channel with "Pong!"
+	} else if(message.content === "!pong") { // Otherwise, if the message is "!pong"
+	  client.createMessage(message.channel.id, "Ping!");
+	  // Respond with "Ping!"
+	}
+  });
