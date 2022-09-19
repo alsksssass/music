@@ -49,7 +49,7 @@ client.on('messageCreate', async (message) => {
 	if(!client.commands.has(command)) return
 
 	try{
-		coget.execute(message, args);
+		coget.execute(message, args, client);
 
 
 	}
