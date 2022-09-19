@@ -45,11 +45,11 @@ client.on('messageCreate', async (message) => {
 	/////????????????????? if (message.guild.ownerId) return
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift();
-	
+	const coget = client.commands.get(command);
 	if(!client.commands.has(command)) return
 
 	try{
-		client.commands.get(command).execute(message, args);
+		coget.execute(message, args);
 
 
 	}

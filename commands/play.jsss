@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { generateDependencyReport, AudioPlayerStatus, joinVoiceChannel, createAudioResource, createAudioPlayer, getVoiceConnection, NoSubscriberBehavior  } = require('discordjs/voice');
+///const { generateDependencyReport, AudioPlayerStatus, joinVoiceChannel, createAudioResource, createAudioPlayer, getVoiceConnection, NoSubscriberBehavior  } = require('discordjs/voice');
 const { guildId, musicChannelId } = require('../config.json');
 
 const player = createAudioPlayer();

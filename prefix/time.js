@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, GuildMember } = require('discord.js');
 
 module.exports = {
-    name: "timer",
+    name: "타이머",
     async execute(message, args) {
 		
 		////if(!message.member.guild.roles.cache.find(role => role.name === 'admin')) return;
