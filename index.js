@@ -1,11 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits } = require('discord.js');
+const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits, Message, MessageMentions } = require('discord.js');
 const { token, prefix } = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const { RESTJSONErrorCodes } = require('discord.js');
 const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
+const message = require('./prefix/message');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
 client.commands = new Collection();
@@ -24,6 +25,9 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
+///시간
+var htt = ''
+var mtt = ''
 
 ////롤
 let roll1 = "null"
