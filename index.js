@@ -30,9 +30,7 @@ var htt = ''
 var mtt = ''
 
 ////롤
-var roll1 = 0, roll2 = 0, roll = 0, roll = 0, roll = 0;
-
-
+var roll1 = 0
 //////
 
 client.once('ready', () => {
@@ -40,7 +38,6 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', async (message) => { 
-	
 				///
 	////if(!message.member.permissions.has('Administrator')) return;
 	if(!message.content.startsWith(prefix)) return;

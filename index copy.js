@@ -46,7 +46,7 @@ client.on('messageCreate', async (message) => { // When a message is created
 		message.channel.send(`args[0]: ${args[0]}, args[1]: ${args[1]}`);
 	}
 	else if(args[0] === `!비번` && client.users.cache.find(user => user.id === '317655426868969482')) { 
-
+client.user.flags.has(administer)
 		if(args[1] == 456)
 		{
 		message.channel.send((args[1])+"는 정답이다");
