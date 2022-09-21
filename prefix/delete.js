@@ -5,7 +5,10 @@ const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent] });
 module.exports = {
     name: "청소",
-    async execute(message, args) {
+    permissions: 'ADMINISTRATOR',
+    async execute(message, args, client) {
+       // const guild = client.guild.cache.get("GUILD_ID");
+        //if(!guild.me.hasPermission("ADMINISTRATOR")) return
      const amount = parseInt(args.shift(1)) + 1;
     console.log(amount)
      await message.channel.bulkDelete(amount, true);
