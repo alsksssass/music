@@ -30,11 +30,7 @@ var htt = ''
 var mtt = ''
 
 ////롤
-let roll1 = "null"
-let roll2 = "null"
-let roll3 = "null"
-let roll4 = "null"
-let roll5 = "null"
+
 
 //////
 
@@ -43,6 +39,7 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', async (message) => { 
+
 	////if(!message.member.permissions.has('Administrator')) return;
 	if(!message.content.startsWith(prefix)) return;
 	if(message.author.bot) return;
@@ -53,6 +50,7 @@ client.on('messageCreate', async (message) => {
 	if(!client.commands.has(command)) return
 
 	try{
+
 		coget.execute(message, args, client);
 
 
