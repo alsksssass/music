@@ -3,7 +3,7 @@ const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, Gui
 module.exports = {
     name: "타이머",
     async execute(message, args) {
-		
+		if(message.member.hasPermission("ADMINISTRATOR"))////어드민 퍼미션
 		////if(!message.member.guild.roles.cache.find(role => role.name === 'admin')) return;
         ggg=args.shift(1)
 		let timecc = ggg*60
