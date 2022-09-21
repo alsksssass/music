@@ -77,5 +77,16 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
+//////////////////////////////////초기입장 멘트/
+///////////////
 
+client.on('guildMemberAdd', async member => {
+await wait(1000);
+member.guild.channels.cache.find(i => i.name === '롤지받기').send('안녕')
+})
+
+
+//Welcome & goodbye messages end\\
+//////////////
+/////////////
 client.login(token);
