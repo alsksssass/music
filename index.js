@@ -28,9 +28,23 @@ for (const file of commandFiles) {
 ///시간
 var htt = ''
 var mtt = ''
+//////케릭터 이름
+var character1 = "수성" 
+var character2 = "지구"
+var character3 = "화성"
+var character4 = "목성"
+var character5 = "금성"
 
 ////롤
-var roll1 = 0
+
+var player1 = ""
+var player2 = ""
+var player3 = ""
+var player4 = ""
+var player5 = ""
+
+
+
 //////
 
 client.once('ready', () => {

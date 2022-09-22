@@ -81,3 +81,8 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(token);
+
+
+console.log(message.author.id)
+console.log(message.guild.ownerId)
+console.log(message.author.username)

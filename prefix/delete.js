@@ -3,6 +3,8 @@ const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, Gui
 const { record } = require('../config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers] });
+
+
 module.exports = {
     name: "청소",
     async execute(message, args, guild) {
