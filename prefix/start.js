@@ -47,9 +47,9 @@ module.exports = {
       ///const arguments = args.shift(1)
       ////console.log(arguments)
       try {
-        if (class1 == 1 || class2 == 1 || class3 == 1 || class4 == 1 || class5 == 1 && arguments !== "끝") 
+        if (class1 == 1 || class2 == 1 || class3 == 1 || class4 == 1 || class5 == 1 )
 {
-  await message.channel.send('내가 선택한 롤 자리에 다른 사람이 들어가 있습니다.');
+  await message.channel.send('이미 선택된 롤입니다.');
 }
 
         if(user.class === character1 && readynum < 5 && class1 == 0)
@@ -61,7 +61,18 @@ module.exports = {
           database = {
             readynum : + 1,
             class1 : user.name,
-            player1 : user.id
+            player1 : user.id,
+            class2,
+            player2,
+            class3,
+            player3,
+            class4,
+            player4,
+            class5,
+            player5,
+            starttime,
+            endtime,
+           
          }
          fs.writeFileSync(dfilePath, JSON.stringify(database));
          

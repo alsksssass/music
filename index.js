@@ -6,7 +6,7 @@ var reclient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: t
 
 //////
 const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits, Message, MessageMentions } = require('discord.js');
-const { token, prefix } = require('./config.json');
+const { token, prefix, playcode, stanby } = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const { RESTJSONErrorCodes } = require('discord.js');
 const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
@@ -81,11 +81,7 @@ console.error(error);
 
 client.on('messageCreate', async (message) => { 
 
-	var uid = message.author.id
-	var database = message.guild.ownerId
-      const cfilePath = `./data/${uid}.json`;
-      const dfilePath = `./data/${database}.json`;
-      const user = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+	
 	///
 ////if(!message.member.permissions.has('Administrator')) return;
 if(!message.content.startsWith(prefix)) return;
@@ -97,9 +93,18 @@ const coget = client.commands.get(command);
 if(!client.commands.has(command)) return
 
 try{
-
+	var uid = message.author.id
+	var database = message.guild.ownerId
+      const cfilePath = `./data/${uid}.json`;
+      const dfilePath = `./data/${database}.json`;
+      const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+	  const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
 /////////레디부분
-if(user.readynum > 0){
+if(admin.readynum > 0){
+if(message.author.bot) return;
+console.log(database+"초")
+console.log(admin.readynum+"초")
+console.log(admin.readynum+"초")
 const channel = client.channels.cache.get('1022125527118663700');
 await channel.send('10초내에 모두 준비를 마쳐주세요!');
 await wait(1000)
@@ -120,38 +125,64 @@ await wait(1000)
 await channel.send('2초내에 모두 준비를 마쳐주세요!');
 await wait(1000)
 await channel.send('1초내에 모두 준비를 마쳐주세요!');
-if(user.readynum < 1){
+if(admin.readynum < 2){
 	database = {
-		readynum : 0
+		readynum : admin.readynum *= 0,
+		class1 : 0,
+		player1 : 0,
+		class2 : 0,
+		player2 : 0,
+		class3 : 0,
+		player3 : 0,
+		class4 : 0,
+		player4 : 0,
+		class5 : 0,
+		player5 : 0,
+		starttime : 0,
+		endtime : 0
 	 }
 	 fs.writeFileSync(dfilePath, JSON.stringify(database));
+	 console.log(admin.readynum+"실패")
 	const channel = client.channels.cache.get('1022125527118663700');
 channel.send('⌛ 시간내에 모두 준비하지 못했습니다. 재 시도 해주세요');
+	}
 
-
-if(user.readynum == 1){
+if(admin.readynum == 2){
 	database = {
-		readynum : 0,
-		starttime : date
+		readynum : admin.readynum *= 0,
+		class1 : admin.class1,
+		player1 : admin.player1,
+		class2 : admin.class2,
+		player2 : admin.player2,
+		class3 : admin.class3,
+		player3 : admin.player3,
+		class4 : admin.class4,
+		player4 : admin.player4,
+		class5 : admin.class5,
+		player5 : admin.player5,
+		starttime : admin.starttime,
+		endtime : admin.endtime
 	 }
 	 fs.writeFileSync(dfilePath, JSON.stringify(database));
-	const channel = client.channels.cache.get('1022125527118663700');
-channel.send('시작!');
-message.guild.members.cache.get(user.player1).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
-message.guild.members.cache.get(user.player1).roles.remove(playcode);
-message.guild.members.cache.get(user.player2).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
-message.guild.members.cache.get(user.player2).roles.remove(playcode);
-message.guild.members.cache.get(user.player3).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
-message.guild.members.cache.get(user.player3).roles.remove(playcode);
-message.guild.members.cache.get(user.player4).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
-message.guild.members.cache.get(user.player4).roles.remove(playcode);
-message.guild.members.cache.get(user.player5).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
-message.guild.members.cache.get(user.player5).roles.remove(playcode);
+	 console.log(admin.readynum+"성공")
+	const channel = await client.channels.cache.get('1022125527118663700');
+await channel.send('시작!')
+await message.guild.members.cache.get(admin.player1).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+await message.guild.members.cache.get(admin.player1).roles.remove(stanby);
+await message.guild.members.cache.get(admin.player2).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+await message.guild.members.cache.get(admin.player2).roles.remove(stanby);
+await message.guild.members.cache.get(admin.player3).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+await message.guild.members.cache.get(admin.player3).roles.remove(stanby);
+await message.guild.members.cache.get(admin.player4).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+await message.guild.members.cache.get(admin.player4).roles.remove(stanby);
+await message.guild.members.cache.get(admin.player5).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+await message.guild.members.cache.get(admin.player5).roles.remove(stanby);
 
 }
+fs.writeFileSync(dfilePath, JSON.stringify(database));
 }
 }
-}
+
 catch(error){
 
 console.error(error);

@@ -6,6 +6,7 @@ const { token} = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const { RESTJSONErrorCodes } = require('discord.js');
 const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
+const message = require('./prefix/message');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent] });
 
 client.commands = new Collection();
@@ -94,3 +95,4 @@ message.member.roles.add(playcode)/////.removeRole(options)
 
 message.guild.members.cache.get(user.id).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
 message.guild.members.cache.get(user.id).roles.remove(playcode);/////특정 유저에게 롤제거 
+(message.channel.id === 'ChannelID')///특정채널 체크
