@@ -103,4 +103,4 @@ member.guild.channels.cache.find(i => i.name === '롤지받기').send('안녕')
 //Welcome & goodbye messages end\\
 //////////////
 /////////////
-client.login(token);
+client.login(process.env.TOKEN);
