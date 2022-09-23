@@ -24,7 +24,7 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
 //////////////////
          let saveUser = {};
       
-         if(uid.id == id){///message.member.roles.cache.has('1022087211266617344')
+         if(uid.id == message.author.id){///message.member.roles.cache.has('1022087211266617344')
             message.channel.send('롤지는 한번만 받을 수 있습니다.')
             return
          }
