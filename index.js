@@ -1,6 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
+/////
+var redis = require('redis');
+var reclient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 
+//////
 const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits, Message, MessageMentions } = require('discord.js');
 const { token, prefix } = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
@@ -75,6 +79,85 @@ console.error(error);
 });
 
 
+client.on('messageCreate', async (message) => { 
+
+	var uid = message.author.id
+	var database = message.guild.ownerId
+      const cfilePath = `./data/${uid}.json`;
+      const dfilePath = `./data/${database}.json`;
+      const user = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+	///
+////if(!message.member.permissions.has('Administrator')) return;
+if(!message.content.startsWith(prefix)) return;
+if(message.author.bot) return;
+/////????????????????? if (message.guild.ownerId) return
+const args = message.content.slice(prefix.length).trim().split(/ +/);
+const command = args.shift();
+const coget = client.commands.get(command);
+if(!client.commands.has(command)) return
+
+try{
+
+/////////레디부분
+if(user.readynum > 0){
+const channel = client.channels.cache.get('1022125527118663700');
+await channel.send('10초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('9초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('8초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('7초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('6초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('5초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('4초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('3초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('2초내에 모두 준비를 마쳐주세요!');
+await wait(1000)
+await channel.send('1초내에 모두 준비를 마쳐주세요!');
+if(user.readynum < 1){
+	database = {
+		readynum : 0
+	 }
+	 fs.writeFileSync(dfilePath, JSON.stringify(database));
+	const channel = client.channels.cache.get('1022125527118663700');
+channel.send('⌛ 시간내에 모두 준비하지 못했습니다. 재 시도 해주세요');
+
+
+if(user.readynum == 1){
+	database = {
+		readynum : 0,
+		starttime : date
+	 }
+	 fs.writeFileSync(dfilePath, JSON.stringify(database));
+	const channel = client.channels.cache.get('1022125527118663700');
+channel.send('시작!');
+message.guild.members.cache.get(user.player1).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.player1).roles.remove(playcode);
+message.guild.members.cache.get(user.player2).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.player2).roles.remove(playcode);
+message.guild.members.cache.get(user.player3).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.player3).roles.remove(playcode);
+message.guild.members.cache.get(user.player4).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.player4).roles.remove(playcode);
+message.guild.members.cache.get(user.player5).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.player5).roles.remove(playcode);
+
+}
+}
+}
+}
+catch(error){
+
+console.error(error);
+}
+});
+
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const command = interaction.client.commands.get(interaction.commandName);
@@ -103,4 +186,4 @@ member.guild.channels.cache.find(i => i.name === '롤지받기').send('안녕')
 //Welcome & goodbye messages end\\
 //////////////
 /////////////
-client.login(process.env.TOKEN);
+client.login(token);

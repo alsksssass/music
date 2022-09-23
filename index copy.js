@@ -86,3 +86,11 @@ client.login(token);
 console.log(message.author.id)
 console.log(message.guild.ownerId)
 console.log(message.author.username)
+let guild = await client.guilds.fetch('812915040713310250')
+let user1 = await guild.members.fetch(user.uid)
+message.member.roles.remove('1022087211266617344')
+message.member.roles.add(playcode)/////.removeRole(options)
+
+
+message.guild.members.cache.get(user.id).roles.add(playcode);/////특정 유저에게 롤주기 성공!!
+message.guild.members.cache.get(user.id).roles.remove(playcode);/////특정 유저에게 롤제거 
