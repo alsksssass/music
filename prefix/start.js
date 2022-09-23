@@ -52,6 +52,7 @@ module.exports = {
   await message.channel.send('이미 선택된 롤입니다.');
 }
 
+
         if(user.class === character1 && readynum < 5 && class1 == 0)
         {
           readynum ++
