@@ -41,27 +41,29 @@ module.exports = {
       var uid = message.author.id
       const cfilePath = `./data/${uid}.json`;
       const dfilePath = `./data/${database}.json`;
-      const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
+      !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
+      !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
+    const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
       const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
-
+//////////////////
       try {
         if(message.author.id === message.guild.ownerId) {
-          database = {
-            readynum : admin.readynum *= 0,
-            class1 : 0,
-            player1 : 0,
-            class2 : 0,
-            player2 : 0,
-            class3 : 0,
-            player3 : 0,
-            class4 : 0,
-            player4 : 0,
-            class5 : 0,
-            player5 : 0,
-            starttime : 0,
-            endtime : 0
-         
-         }
+            database = {
+                readynum : 0,
+                class1 : 0,
+                player1 : 0,
+                class2 : 0,
+                player2 : 0,
+                class3 : 0,
+                player3 : 0,
+                class4 : 0,
+                player4 : 0,
+                class5 : 0,
+                player5 : 0,
+                starttime : 0,
+                endtime : 0,
+               
+             }
          fs.writeFileSync(dfilePath, JSON.stringify(database));
          
         }
