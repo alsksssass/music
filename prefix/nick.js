@@ -23,11 +23,12 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
 
 //////////////////
          let saveUser = {};
-      
+      if(uid.id){
          if(uid.id == message.author.id){///message.member.roles.cache.has('1022087211266617344')
             message.channel.send('롤지는 한번만 받을 수 있습니다.')
             return
          }
+      }
         if(arguments != "목성" && arguments != "화성" && arguments != "지구" && arguments != "금성" && arguments != "수성") 
         {
            message.channel.send("롤 확인을 다시해 주세요")
