@@ -23,12 +23,12 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
 
 //////////////////
          let saveUser = {};
-      if(uid.id){
-         if(uid.id == message.author.id){///message.member.roles.cache.has('1022087211266617344')
+     
+         if(user.id == message.author.id){///message.member.roles.cache.has('1022087211266617344')
             message.channel.send('롤지는 한번만 받을 수 있습니다.')
             return
          }
-      }
+      
         if(arguments != "목성" && arguments != "화성" && arguments != "지구" && arguments != "금성" && arguments != "수성") 
         {
            message.channel.send("롤 확인을 다시해 주세요")
@@ -38,7 +38,8 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
          //let role = await message.guild.roles.cache.find(r => r.name == '대기자')
          const rolecg = message.guild.roles.cache.find(role => role.name === '대기자')///1022087211266617344
          message.member.roles.add('1022087211266617344')/////.removeRole(options)
-
+console.log(user.id)
+console.log(message.author.id)
          message.member.setNickname(arguments)
          user1 = await message.author.username
          const message1 = await client.channels.cache.get(record)
