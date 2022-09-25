@@ -1,6 +1,6 @@
 
 const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, ClientUser, User, time, GuildChannel, GuildManager, MessageManager, GuildMemberManager, GuildBanManager, GuildBan, GuildStickerManager, PermissionsBitField, PermissionOverwriteManager, MessageFlagsBitField, GuildMemberRoleManager } = require('discord.js');
-const { record, chroll } = require('../config.json');
+const { record, chroll, stanby } = require('../config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildBans] });
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 
@@ -39,12 +39,13 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
          //let role = await message.guild.roles.cache.find(r => r.name == '대기자')
          const rolecg = message.guild.roles.cache.find(role => role.name === '대기자')///1022087211266617344
          message.member.roles.add('1022087211266617344')/////.removeRole(options)
-
-         message.member.setNickname(arguments)
+         await wait(1000);
+         await message.member.setNickname(arguments)
          user1 = await message.author.username
          const message1 = await client.channels.cache.get(record)
          await message1.send(`>>> ${arguments}  역 \n${user1}  님`);
          await message.author.send(arguments+"역의 롤지입니다.")
+      
         await wait(1000)
          saveUser = {
             id : uid,
@@ -58,30 +59,36 @@ const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
             case '금성' : 
             {
                await message.author.send({ files: ['./roll/금성.txt'] });
+               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
                break;
             }
             case '지구' : 
             {
                await message.author.send({ files: ['./roll/지구.txt'] });
+               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
                break;
             }
             case '수성' : 
             {
                await message.author.send({ files: ['./roll/수성.txt'] });
+               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
                break;
             }
             case '화성' : 
             {
                await message.author.send({ files: ['./roll/화성.txt'] });
+               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
                break;
             }
             case '목성' : 
             {
                await message.author.send({ files: ['./roll/목성.txt'] });
+               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
                break;
             }
          
          }
+         
         }
 } catch (err) {
   console.error(err);

@@ -61,6 +61,11 @@ module.exports = {
                 player4 : "미지정",
                 class5 : "미지정",
                 player5 : "미지정",
+                playerid1 : "미지정",
+                playerid2 : "미지정",
+                playerid3 : "미지정",
+                playerid4 : "미지정",
+                playerid5 : "미지정",
                 starttime : 0,
                 endtime : 0,
                
