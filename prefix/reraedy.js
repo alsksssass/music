@@ -43,23 +43,24 @@ module.exports = {
       const dfilePath = `./data/${database}.json`;
       !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
       !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
-    const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
-      const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+    const user = fs.readFileSync(cfilePath, "utf-8");
+      const admin = fs.readFileSync(dfilePath, "utf-8");
 //////////////////
       try {
         if(message.author.id === message.guild.ownerId) {
+          console.log("오너파일 덮어쓰기")
             database = {
                 readynum : 0,
-                class1 : 0,
-                player1 : 0,
-                class2 : 0,
-                player2 : 0,
-                class3 : 0,
-                player3 : 0,
-                class4 : 0,
-                player4 : 0,
-                class5 : 0,
-                player5 : 0,
+                class1 : "미지정",
+                player1 : "미지정",
+                class2 : "미지정",
+                player2 : "미지정",
+                class3 : "미지정",
+                player3 : "미지정",
+                class4 : "미지정",
+                player4 : "미지정",
+                class5 : "미지정",
+                player5 : "미지정",
                 starttime : 0,
                 endtime : 0,
                

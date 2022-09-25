@@ -1,12 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
-/////
-var redis = require('redis');
-var reclient = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
+const today = new Date();
+const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
 
-//////
 const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits, Message, MessageMentions } = require('discord.js');
-const { token, prefix, playcode, stanby } = require('./config.json');
+const { token, prefix, playcode, stanby, owner, character1, character2, character3, character4, character5, totalplayer } = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const { RESTJSONErrorCodes } = require('discord.js');
 const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
@@ -18,7 +16,9 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 const prefixFiles = fs.readdirSync('./prefix').filter(file => file.endsWith('.js'));
 
-for (const file of prefixFiles) {
+
+
+	  for (const file of prefixFiles) {
 	const prefixs = require(`./prefix/${file}`);
 	client.commands.set(prefixs.name, prefixs);
 }
@@ -33,19 +33,6 @@ for (const file of commandFiles) {
 var htt = ''
 var mtt = ''
 //////케릭터 이름
-var character1 = "수성" 
-var character2 = "지구"
-var character3 = "화성"
-var character4 = "목성"
-var character5 = "금성"
-
-////롤
-
-var player1 = ""
-var player2 = ""
-var player3 = ""
-var player4 = ""
-var player5 = ""
 
 
 
@@ -86,69 +73,59 @@ if(message.author.bot) return;
 /////????????????????? if (message.guild.ownerId) return
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const command = args.shift();
-const coget = client.commands.get(command);
 if(!client.commands.has(command)) return
 
 try{
+	///////////저장소
 	var uid = message.author.id
 	var database = message.guild.ownerId
       const cfilePath = `./data/${uid}.json`;
       const dfilePath = `./data/${database}.json`;
+	  !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
+      !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
       const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
 	  const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
-/////////레디부분
-if(admin.readynum > 0){
-if(message.author.bot) return;
-console.log(database+"초")
-console.log(admin.readynum+"초")
-console.log(admin.readynum+"초")
-const channel = client.channels.cache.get('1022125527118663700');
-await channel.send('10초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('9초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('8초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('7초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('6초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('5초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('4초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('3초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('2초내에 모두 준비를 마쳐주세요!');
-await wait(1000)
-await channel.send('1초내에 모두 준비를 마쳐주세요!');
-if(admin.readynum < 2){
-	database = {
-		readynum : admin.readynum *= 0,
-		class1 : 0,
-		player1 : 0,
-		class2 : 0,
-		player2 : 0,
-		class3 : 0,
-		player3 : 0,
-		class4 : 0,
-		player4 : 0,
-		class5 : 0,
-		player5 : 0,
-		starttime : 0,
-		endtime : 0
-	 }
-	 fs.writeFileSync(dfilePath, JSON.stringify(database));
-	 console.log(admin.readynum+"실패")
-	const channel = client.channels.cache.get('1022125527118663700');
-channel.send('⌛ 시간내에 모두 준비하지 못했습니다. 재 시도 해주세요');
-	}
 
-if(admin.readynum == 2){
-	database = {
-		readynum : admin.readynum *= 0,
-		class1 : admin.class1,
-		player1 : admin.player1,
+//////////저장소
+var countch = 10
+/////////레디부분
+if(admin.readynum == 1){
+if(message.author.bot) return;
+const channel = client.channels.cache.get('1022125527118663700');
+await channel.send("10초안에 모두 준비를 마쳐주세요")
+}
+
+
+	if(admin.readynum < totalplayer) {
+	  console.log("오너파일 덮어쓰기")
+		database = {
+			readynum : 0,
+			class1 : "미지정",
+			player1 : "미지정",
+			class2 : "미지정",
+			player2 : "미지정",
+			class3 : "미지정",
+			player3 : "미지정",
+			class4 : "미지정",
+			player4 : "미지정",
+			class5 : "미지정",
+			player5 : "미지정",
+			starttime : 0,
+			endtime : 0,
+		   
+		 }
+	 fs.writeFileSync(dfilePath, JSON.stringify(database));
+	await message.channel.send("실패!!! 다시 시도해 주세요")
+	}
+	else return;
+
+
+if(admin.readynum == totalplayer )
+{
+	console.log("성공")
+database = {
+		class1 : admin.class,
+		player1 : admin.name,
 		class2 : admin.class2,
 		player2 : admin.player2,
 		class3 : admin.class3,
@@ -157,7 +134,7 @@ if(admin.readynum == 2){
 		player4 : admin.player4,
 		class5 : admin.class5,
 		player5 : admin.player5,
-		starttime : admin.starttime,
+		starttime : date,
 		endtime : admin.endtime
 	 }
 	 fs.writeFileSync(dfilePath, JSON.stringify(database));
@@ -176,9 +153,9 @@ await message.guild.members.cache.get(admin.player5).roles.add(playcode);/////�
 await message.guild.members.cache.get(admin.player5).roles.remove(stanby);
 
 }
-fs.writeFileSync(dfilePath, JSON.stringify(database));
+
 }
-}
+
 
 catch(error){
 
