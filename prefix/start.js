@@ -51,21 +51,15 @@ module.exports = {
                 player4 : admin.player4,
                 class5 : admin.class5,
                 player5 : admin.player5,
-<<<<<<< HEAD
                 class6 : admin.class6,
                 player6 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 playerid1 : user.id,
                 playerid2 : admin.playerid2,
                 playerid3 : admin.playerid3,
                 playerid4 : admin.playerid4,
                 playerid5 : admin.playerid5,
-<<<<<<< HEAD
                 playerid6 : admin.playerid6,
                 round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : admin.vpoint
@@ -89,21 +83,15 @@ module.exports = {
                 player4 : admin.player4,
                 class5 : admin.class5,
                 player5 : admin.player5,
-<<<<<<< HEAD
                 class6 : admin.class6,
                 player6 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 playerid1 : admin.playerid1,
                 playerid2 : user.id,
                 playerid3 : admin.playerid3,
                 playerid4 : admin.playerid4,
                 playerid5 : admin.playerid5,
-<<<<<<< HEAD
                 playerid6 : admin.playerid6,
                 round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : admin.vpoint
@@ -128,21 +116,15 @@ module.exports = {
                 player4 : admin.player4,
                 class5 : admin.class5,
                 player5 : admin.player5,
-<<<<<<< HEAD
                 class6 : admin.class6,
                 player6 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 playerid1 : admin.playerid1,
                 playerid2 : admin.playerid2,
                 playerid3 : user.id,
                 playerid4 : admin.playerid4,
                 playerid5 : admin.playerid5,
-<<<<<<< HEAD
                 playerid6 : admin.playerid6,
                 round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : admin.vpoint
@@ -167,21 +149,15 @@ module.exports = {
                 player4 : user.name,
                 class5 : admin.class5,
                 player5 : admin.player5,
-<<<<<<< HEAD
                 class6 : admin.class6,
                 player6 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 playerid1 : admin.playerid1,
                 playerid2 : admin.playerid2,
                 playerid3 : admin.playerid3,
                 playerid4 : user.id,
                 playerid5 : admin.playerid5,
-<<<<<<< HEAD
                 playerid6 : admin.playerid6,
                 round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : admin.vpoint
@@ -206,21 +182,15 @@ module.exports = {
                 player4 : admin.player4,
                 class5 : user.class,
                 player5 : user.name,
-<<<<<<< HEAD
                 class6 : admin.class6,
                 player6 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 playerid1 : admin.playerid1,
                 playerid2 : admin.playerid2,
                 playerid3 : admin.playerid3,
                 playerid4 : admin.playerid4,
                 playerid5 : user.id,
-<<<<<<< HEAD
                 playerid6 : admin.playerid6,
                 round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : admin.vpoint

@@ -146,7 +146,6 @@ if(admin.readynum == 2){
 				const channel = client.channels.cache.get('1022125527118663700');
 				await channel.send({ content: ">>> "+admin.class1+"역"+"\n"+admin.player1+"님"+"\n"+"\n"+admin.class2+"역"+"\n"+admin.player2+"님"+"\n"+"\n"+admin.class3+"역"+"\n"+admin.player3+"님"+"\n"+"\n"+admin.class4+"역"+"\n"+admin.player4+"님"+"\n"+"\n"+admin.class5+"역"+"\n"+admin.player5+"님"+"\n"+"\n" })
 				}
-<<<<<<< HEAD
 				if(admin.readynum == 6){
 					if(message.author.bot) return;
 					const channel = client.channels.cache.get('1022125527118663700');
@@ -155,11 +154,6 @@ if(admin.readynum == 2){
 	
 
 	if(admin.readynum != totalplayer && message.channel.id == stanby && totalplayer == 5) {
-=======
-	
-
-	if(admin.readynum != totalplayer && message.channel.id === stanby) {
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 	  console.log("오너파일 덮어쓰기")
 		database = {
 			readynum : 0,
@@ -173,21 +167,15 @@ if(admin.readynum == 2){
 			player4 : "미지정",
 			class5 : "미지정",
 			player5 : "미지정",
-<<<<<<< HEAD
 			class6 : "미지정",
 			player6 : "미지정",
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 			playerid1 : "미지정",
 			playerid2 : "미지정",
 			playerid3 : "미지정",
 			playerid4 : "미지정",
 			playerid5 : "미지정",
-<<<<<<< HEAD
 			playerid6 : "미지정",
 			round : 0,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 			starttime : 0,
 			endtime : 0,
 			vpoint : 0
@@ -198,11 +186,7 @@ if(admin.readynum == 2){
 	}
 
 
-<<<<<<< HEAD
 if(admin.readynum == totalplayer && totalplayer == 5 ){
-=======
-if(admin.readynum == totalplayer ){
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 	await wait(1000);
 	console.log("성공")
 database = {
@@ -216,21 +200,15 @@ database = {
 		player4 : admin.player4,
 		class5 : admin.class5,
 		player5 : admin.player5,
-<<<<<<< HEAD
 		class5 : admin.class6,
 		player5 : admin.player6,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 		playerid1 : admin.playerid1,
 		playerid2 : admin.playerid2,
 		playerid3 : admin.playerid3,
 		playerid4 : admin.playerid4,
 		playerid5 : admin.playerid5,
-<<<<<<< HEAD
 		playerid6 : admin.playerid6,
         round : admin.round,
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 		starttime : date,
 		endtime : admin.endtime,
 		vpoint : admin.vpoint
@@ -242,10 +220,7 @@ database = {
 				await channel.send('시작!')
 				const channel1 = client.channels.cache.get('1022125527118663700');
 				await channel1.send({ content: ">>> "+admin.class1+"역"+"\n"+admin.player1+"님"+"\n"+"\n"+admin.class2+"역"+"\n"+admin.player2+"님"+"\n"+"\n"+admin.class3+"역"+"\n"+admin.player3+"님"+"\n"+"\n"+admin.class4+"역"+"\n"+admin.player4+"님"+"\n"+"\n"+admin.class5+"역"+"\n"+admin.player5+"님"+"\n"+"\n"+admin.starttime+"에 플레이 시작!" })
-<<<<<<< HEAD
 				client.user.setAvatar(botplay);
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 		message.guild.members.cache.get(admin.playerid1).roles.add(playcode).catch(console.warn = () => {});/////특정 유저에게 롤주기 성공!!
 		message.guild.members.cache.get(admin.playerid1).roles.remove(stanby).catch(console.warn = () => {});
 		message.guild.members.cache.get(admin.playerid2).roles.add(playcode).catch(console.warn = () => {});
@@ -256,7 +231,6 @@ database = {
 		message.guild.members.cache.get(admin.playerid4).roles.remove(stanby).catch(console.warn = () => {});
 		message.guild.members.cache.get(admin.playerid5).roles.add(playcode).catch(console.warn = () => {});
 		message.guild.members.cache.get(admin.playerid5).roles.remove(stanby).catch(console.warn = () => {});
-<<<<<<< HEAD
 	}
 	catch (err) {
 		console.error(err);
@@ -313,8 +287,6 @@ database = {
 		message.guild.members.cache.get(admin.playerid6).roles.add(playcode).catch(console.warn = () => {});
 		message.guild.members.cache.get(admin.playerid6).roles.remove(stanby).catch(console.warn = () => {});
 
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 
 	}
 	catch (err) {
