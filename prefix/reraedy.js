@@ -61,8 +61,18 @@ module.exports = {
                 player4 : "미지정",
                 class5 : "미지정",
                 player5 : "미지정",
+                class6 : "미지정",
+                player6 : "미지정",
+                playerid1 : "미지정",
+                playerid2 : "미지정",
+                playerid3 : "미지정",
+                playerid4 : "미지정",
+                playerid5 : "미지정",
+                playerid6 : "미지정",
+                round : 0,
                 starttime : 0,
                 endtime : 0,
+                vpoint : 0
                
              }
          fs.writeFileSync(dfilePath, JSON.stringify(database));

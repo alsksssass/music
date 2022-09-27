@@ -27,8 +27,8 @@ module.exports = {
          return message.channel.send('2이상 99이하의 숫자만 입력');
      }
      else if (amount>2 || amount < 100){
-        await message.channel.bulkDelete(amount, true);
-        await message.channel.send(amount-1+"개 삭제됨")
+        await message.channel.bulkDelete(amount, true).then(messages => message.channel.send(`메시지 **${messages.size}** 개 삭제됨`))
+        .catch(console.error);
         await wait(1000)
         await message.channel.bulkDelete(1)
      }
@@ -42,3 +42,5 @@ module.exports = {
 
     }
 }
+
+   
