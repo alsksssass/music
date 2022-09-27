@@ -1,10 +1,6 @@
 
 const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, ClientUser, User, time, GuildChannel, GuildManager, MessageManager, GuildMemberManager, GuildBanManager, GuildBan, GuildStickerManager, PermissionsBitField, PermissionOverwriteManager, MessageFlagsBitField, GuildMemberRoleManager } = require('discord.js');
-<<<<<<< HEAD
 const { record, chroll, stanby, guildId } = require('../config.json');
-=======
-const { record, chroll, stanby } = require('../config.json');
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildBans] });
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 
@@ -67,71 +63,39 @@ const date = "" + today.getFullYear() +"년" + today.getMonth() + "월" + today.
             {
                console.log(arguments)
                await message.author.send({ files: ['./roll/금성.txt'] });
-<<<<<<< HEAD
                await message.author.send({ content: "일정과 시간을 조율하신후 약속된 시간에\n``!준비``를\n모든 플레이어가 15초내에 치시면 됩니다.\n카운트는 명령어 사용후  15초입니다." })
-=======
-               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                break;
             }
             case '지구' : 
             {
                console.log(arguments)
                await message.author.send({ files: ['./roll/지구.txt'] });
-<<<<<<< HEAD
                await message.author.send({ content: "일정과 시간을 조율하신후 약속된 시간에\n``!준비``를\n모든 플레이어가 15초내에 치시면 됩니다.\n카운트는 명령어 사용후  15초입니다." })
-=======
-               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                break;
             }
             case '수성' : 
             {
                console.log(arguments)
                await message.author.send({ files: ['./roll/수성.txt'] });
-<<<<<<< HEAD
                await message.author.send({ content: "일정과 시간을 조율하신후 약속된 시간에\n``!준비``를\n모든 플레이어가 15초내에 치시면 됩니다.\n카운트는 명령어 사용후  15초입니다." })
-=======
-               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                break;
             }
             case '화성' : 
             {
                console.log(arguments)
                await message.author.send({ files: ['./roll/화성.txt'] });
-<<<<<<< HEAD
                await message.author.send({ content: "일정과 시간을 조율하신후 약속된 시간에\n``!준비``를\n모든 플레이어가 15초내에 치시면 됩니다.\n카운트는 명령어 사용후  15초입니다." })
-=======
-               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                break;
             }
             case '목성' : 
             {
                console.log(arguments)
                await message.author.send({ files: ['./roll/목성.txt'] });
-<<<<<<< HEAD
                await message.author.send({ content: "일정과 시간을 조율하신후 약속된 시간에\n``!준비``를\n모든 플레이어가 15초내에 치시면 됩니다.\n카운트는 명령어 사용후  15초입니다." })
-=======
-               await message.author.send({ content: "일정과 시간을 조율하신수 약속된 시간에\n``!준비``를\n모든 플레이어가 10초내에 치시면 됩니다.\n카운트는 명령어가 처음 친후로 부터 10초입니다." })
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
                break;
             }
          }
-<<<<<<< HEAD
       }
-         if(message.guild.id != guildId) {
-            console.log(message.guild.id)
-            console.log(guildId)
-
-            await message.channel.send('이채널에선 사용할 수 없습니다.')
-           
-         
-=======
->>>>>>> 55b13dffd794b650e1e99dfebb504476667575e5
-         
-        }
 } catch (err) {
   console.error(err);
   
