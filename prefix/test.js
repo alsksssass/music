@@ -23,8 +23,8 @@ module.exports = {
      const dfilePath = `./data/${database}.json`;
      !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
      !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
-   const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
-     const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+   const user = (fs.readFileSync(cfilePath, "utf-8"));
+     const admin = (fs.readFileSync(dfilePath, "utf-8"));
 //////////////////
 
 

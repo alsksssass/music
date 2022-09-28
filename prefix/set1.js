@@ -65,18 +65,20 @@ var clueid46 = 0
 module.exports = {
   name: "세팅",
   async execute(message, args, client ) {
-     ////저장정보 불러오는 부분
-     const arguments = args.shift(1)
-     var database = '0011005500'
-     var uid = message.author.id
-     const cfilePath = `./data/${uid}.json`;
-     const dfilePath = `./data/${database}.json`;
-     !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
-     !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
-   const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
-     const clue = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
-///////////
+    var cluedata = '0011005500'
+    var database = message.guild.ownerId
+    var uid = message.author.id
+    const cfilePath = `./data/${uid}.json`;
+    const dfilePath = `./data/${database}.json`;
+    const efilePath = `./data/${cluedata}.json`;
+    !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
+    !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
+    !fs.existsSync(efilePath) ? fs.writeFileSync(efilePath, JSON.stringify({})) : null;
+  const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
+    const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+    const clue = JSON.parse(fs.readFileSync(efilePath, "utf-8"));
   try {
+    let cluedata = {};
     
     await message.channel.bulkDelete(1)
     const channel = client.channels.cache.get(chclue1);
@@ -160,7 +162,7 @@ const channel4 = client.channels.cache.get(chclue5);
     .then(sent => { // 'sent' is that message you just sent
         clueid17 = sent.id;
     })
-    await channel1.send('**180> 트렁크**')
+    await channel1.send('**180> 캐리어**')
     .then(sent => { // 'sent' is that message you just sent
         clueid18 = sent.id;
     })
@@ -284,7 +286,7 @@ const channel4 = client.channels.cache.get(chclue5);
     })
     await channel4.send('-----------------------------')
     
-    database = {
+    cluedata = {
 
         dclueid01 : clueid01,
         dclueid02 : clueid02,
@@ -334,7 +336,7 @@ const channel4 = client.channels.cache.get(chclue5);
         dclueid46 : clueid46
         
         }
- fs.writeFileSync(dfilePath, JSON.stringify(database));
+ fs.writeFileSync(efilePath, JSON.stringify(cluedata));
  
 } catch (error) {
     console.error(error);
