@@ -299,6 +299,52 @@ database = {
 
 })
 
+client.on('messageCreate', async (message) => { 
+if(message.author.bot) return;
+/////????????????????? if (message.guild.ownerId) return
+const args = message.content.slice(prefix.length).trim().split(/ +/);
+const command = args.shift();
+const coget = client.commands.get(command);
+if(!client.commands.has(command)) return
+
+try{
+if(admin.round == 1 && admin.vpoint == 0){
+	const channel5 = client.channels.cache.get(note1);//추리노트
+	await channel5.send('1차 조사가 모두 끝났습니다. 토론시간을 가지신후 2차조사를 시작하시려면 ```!2차조사 시작```이라고 쳐주세요.')
+	database = {
+		class1 : admin.class1,
+		player1 : admin.player1,
+		class2 : admin.class2,
+		player2 : admin.player2,
+		class3 : admin.class3,
+		player3 : admin.player3,
+		class4 : admin.class4,
+		player4 : admin.player4,
+		class5 : admin.class5,
+		player5 : admin.player5,
+		class5 : admin.class6,
+		player5 : admin.player6,
+		playerid1 : admin.playerid1,
+		playerid2 : admin.playerid2,
+		playerid3 : admin.playerid3,
+		playerid4 : admin.playerid4,
+		playerid5 : admin.playerid5,
+		playerid6 : admin.playerid6,
+        round : (admin.round *= 0) +1 ,
+		starttime : admin.starttime,
+		endtime : admin.endtime,
+		vpoint : admin.vpoint
+	 }
+	 fs.writeFileSync(dfilePath, JSON.stringify(database));
+}
+
+}
+catch(error){
+
+console.error(error);
+}
+});
+
 
 
 client.on('interactionCreate', async interaction => {
