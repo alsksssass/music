@@ -12,17 +12,45 @@ const date = "" + today.getFullYear() +"년" + today.getMonth() + "월" + today.
 
 
 module.exports = {
-  name: "재충전",
+  name: "단서",
   async execute(message, args, client ) {
-     ////저장정보 불러오는 부분
-     var database = owner
-     var uid = message.author.id
-     const cfilePath = `./data/${uid}.json`;
-     const dfilePath = `./data/${database}.json`;
-     !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
-     !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
-   const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
-     const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+    const arguments = args.shift(1)
+    const channel = client.channels.cache.get(chclue1);//윤새롬
+    const channel1 = client.channels.cache.get(chclue2);//한호랑
+    const channel2 = client.channels.cache.get(chclue3);//유수호
+    const channel3 = client.channels.cache.get(chclue4);//오정성
+    const channel4 = client.channels.cache.get(chclue5);//곽편집
+         ////저장정보 불러오는 부분
+         var database = '0011005500'
+         var uid = message.author.id
+         const cfilePath = `./data/${uid}.json`;
+         const dfilePath = `./data/${database}.json`;
+         !fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
+         !fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
+       const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
+         const clue = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+    ///////////
+     if (isNaN(arguments)) {
+      return message.channel.send('숫자만 입력!');
+     } else {
+      switch(arguments)
+         {
+            case '010' : 
+
+            {
+               console.log(arguments)
+               await channel1.send({ files: ['./clue/010.png'] })
+               client.channels.cache
+               .get(clue1)
+               .messages.fetch(clue.dclueid1)
+               .then((msg) => msg.edit('~~**010> 다이어리**~~'));
+               break;
+            }
+
+         }
+        }
+      
+     
 //////////////////
 //const channel = client.channels.cache.get('1022149255768571994');
 // const channel = message.guild.channels.cache.find(ch => ch.name === '단서채널-1');
