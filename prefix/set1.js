@@ -356,7 +356,7 @@ await editms.edit({ content: "준비중입니다. 1/10" })
  fs.writeFileSync(efilePath, JSON.stringify(cluedata));
  
  database = {
-    readynum : admin.readynum,
+                readynum : admin.readynum,
                 class1 : admin.class1,
                 player1 : admin.player1,
                 class2 : admin.class2,
@@ -375,10 +375,10 @@ await editms.edit({ content: "준비중입니다. 1/10" })
                 playerid4 : user.id,
                 playerid5 : admin.playerid5,
                 playerid6 : admin.playerid6,
-                round : admin.round + 1,
+                round : (admin.round *= 0 ) + 1,
                 starttime : admin.starttime,
                 endtime : admin.endtime,
-                vpoint : admin.vpoint
+                vpoint : (admin.vpoint *= 0)+20
    
  }
 fs.writeFileSync(dfilePath, JSON.stringify(database));

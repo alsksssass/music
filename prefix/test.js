@@ -63,10 +63,7 @@ module.exports = {
   //     await console.log(admin.vpoint)
   //   }
   try {
-    client.channels.cache
-    .get('1011973926559162408')
-    .messages.fetch('1023880247403356230')
-    .then((msg) => msg.edit('~~**010> 다이어리**~~'));
+message.channel.send('dd')
   } catch (error) {
     console.error(error);
     

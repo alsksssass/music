@@ -12,15 +12,15 @@ const date = "" + today.getFullYear() +"년" + today.getMonth() + "월" + today.
 
 
 module.exports = {
-  name: "!2차조사",
+  name: "올청소",
   async execute(message, args, client ) {
     const arguments = args.shift(1)
-    const channel = client.channels.cache.get(chclue1);//윤새롬
-    const channel1 = client.channels.cache.get(chclue2);//한호랑
-    const channel2 = client.channels.cache.get(chclue3);//유수호
-    const channel3 = client.channels.cache.get(chclue4);//오정성
-    const channel4 = client.channels.cache.get(chclue5);//곽편집
-    const channel5 = client.channels.cache.get(note1);//추리노트
+    const channel1 = client.channels.cache.get(chclue1);//윤새롬
+    const channel2 = client.channels.cache.get(chclue2);//한호랑
+    const channel3 = client.channels.cache.get(chclue3);//유수호
+    const channel4 = client.channels.cache.get(chclue4);//오정성
+    const channel5 = client.channels.cache.get(chclue5);//곽편집
+    const channel6 = client.channels.cache.get(note1);//추리노트
          ////저장정보 불러오는 부분
          var cluedata = '0011005500'
          var database = message.guild.ownerId
@@ -37,33 +37,53 @@ module.exports = {
     ///////////
 
 
-if(admin.round == 2 && admin.vpoint == 0){
-	const channel5 = client.channels.cache.get(note1);//추리노트
-	await channel5.send('2차 조사가 시작되었습니다. ```!단서 ???``` 명령어로 남은 단서를 모두 열람 할 수 있습니다!')
-	database = {
-		class1 : admin.class1,
-		player1 : admin.player1,
-		class2 : admin.class2,
-		player2 : admin.player2,
-		class3 : admin.class3,
-		player3 : admin.player3,
-		class4 : admin.class4,
-		player4 : admin.player4,
-		class5 : admin.class5,
-		player5 : admin.player5,
-		class5 : admin.class6,
-		player5 : admin.player6,
-		playerid1 : admin.playerid1,
-		playerid2 : admin.playerid2,
-		playerid3 : admin.playerid3,
-		playerid4 : admin.playerid4,
-		playerid5 : admin.playerid5,
-		playerid6 : admin.playerid6,
-        round : admin.round,
-		starttime : admin.starttime,
-		endtime : admin.endtime,
-		vpoint : admin.vpoint +30
-	 }
-    }
+
+///채널내 모든메시지 삭제
+let fetched1;
+let fetched2;
+let fetched3;
+let fetched4;
+let fetched5;
+let fetched6;
+console.log('0')
+
+
+do {
+  await wait(1000)
+  fetched1 = await channel1.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel1.bulkDelete(fetched1).catch(console.warn = () => {});
+  console.log('1')
+  
+  await wait(1000)
+  fetched2 = await channel2.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel2.bulkDelete(fetched2).catch(console.warn = () => {});
+  console.log('2')
+  
+  await wait(1000)
+  fetched3 = await channel3.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel3.bulkDelete(fetched3).catch(console.warn = () => {});
+  console.log('3')
+  
+  await wait(1000)
+  fetched4 = await channel4.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel4.bulkDelete(fetched4).catch(console.warn = () => {});
+  console.log('4')
+  
+  await wait(1000)
+  fetched5 = await channel5.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel5.bulkDelete(fetched5).catch(console.warn = () => {});
+  console.log('5')
+  
+  await wait(1000)
+  fetched6 = await channel6.messages.fetch({limit: 99}).catch(console.warn = () => {});
+  await channel6.bulkDelete(fetched6).catch(console.warn = () => {});
+  console.log('6')
+  
+  await wait(1000)
 }
+while((fetched1.size+fetched2.size+fetched3.size+fetched4.size+fetched5.size+fetched6.size) >= 2);
+console.log('끝')
+}
+
+
 }

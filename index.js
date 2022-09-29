@@ -4,7 +4,7 @@ const today = new Date();
 const date = "" + today.getFullYear() + today.getMonth() + today.getDate() + today.getHours() + today.getMinutes();
 
 const { Client, GatewayIntentBits, Collection, GuildMember, PermissionFlagsBits, Message, MessageMentions } = require('discord.js');
-const { token, prefix, playcode, stanby, owner, character1, character2, character3, character4, character5, totalplayer, character6, botplay, botstan } = require('./config.json');
+const { token, prefix, totalplayer, stanby, record, playcode, owner, character1, character2, character3, character4, character5, character6, botplay, botstan, guildId, chclue1, chclue2, chclue3, chclue4, chclue5, note1 } = require('./config.json');
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
 const { RESTJSONErrorCodes } = require('discord.js');
 const { createAudioResource, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, AudioPlayerStatus, generateDependencyReport, getVoiceConnection, VoiceConnectionStatus } = require('@discordjs/voice');
@@ -186,10 +186,11 @@ if(admin.readynum == 2){
 	}
 
 
-if(admin.readynum == totalplayer && totalplayer == 5 ){
+if(admin.readynum == totalplayer && totalplayer == 5 && admin.round == 0){
 	await wait(1000);
 	console.log("성공")
 database = {
+	readynum : admin.readynum,
 		class1 : admin.class1,
 		player1 : admin.player1,
 		class2 : admin.class2,
@@ -239,10 +240,11 @@ database = {
 				
 
 }
-if(admin.readynum == totalplayer && totalplayer == 6 ){
+if(admin.readynum == totalplayer && totalplayer == 6 && admin.round == 0){
 	await wait(1000);
 	console.log("성공")
 database = {
+	readynum : admin.readynum,
 		class1 : admin.class1,
 		player1 : admin.player1,
 		class2 : admin.class2,
@@ -305,13 +307,31 @@ if(message.author.bot) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const command = args.shift();
 const coget = client.commands.get(command);
+var cluedata = '0011005500'
+var database = message.guild.ownerId
+var uid = message.author.id
+const cfilePath = `./data/${uid}.json`;
+const dfilePath = `./data/${database}.json`;
+const efilePath = `./data/${cluedata}.json`;
+!fs.existsSync(cfilePath) ? fs.writeFileSync(cfilePath, JSON.stringify({})) : null;
+!fs.existsSync(dfilePath) ? fs.writeFileSync(dfilePath, JSON.stringify({})) : null;
+!fs.existsSync(efilePath) ? fs.writeFileSync(efilePath, JSON.stringify({})) : null;
+const user = JSON.parse(fs.readFileSync(cfilePath, "utf-8"));
+const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
+const clue = JSON.parse(fs.readFileSync(efilePath, "utf-8"));
 if(!client.commands.has(command)) return
 
 try{
-if(admin.round == 1 && admin.vpoint == 0){
+if(admin.round == 1 && admin.vpoint == 0 && admin.readynum == totalplayer){
+	await today.setMinutes(today.getMinutes() + 50);
+	const dlck = "" + today.getDate() +"일"+ today.getHours() + "시" + today.getMinutes() + "분";
+	
+	
 	const channel5 = client.channels.cache.get(note1);//추리노트
 	await channel5.send('1차 조사가 모두 끝났습니다. 토론시간을 가지신후 2차조사를 시작하시려면 ```!2차조사 시작```이라고 쳐주세요.')
+	await channel5.send(dlck+"후에 2차조사를 시작 하세요")
 	database = {
+		readynum : admin.readynum,
 		class1 : admin.class1,
 		player1 : admin.player1,
 		class2 : admin.class2,
