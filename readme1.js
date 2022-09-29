@@ -111,3 +111,27 @@ switch(arguments)
             }
 
          }
+
+
+
+
+         /////////
+	 const playrecord = new EmbedBuilder()
+	 .setColor(0x0099FF)
+	 .setTitle('타로마스터')
+	 .setURL('https://discord.js.org/')
+	 .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+	 .setDescription('타로마스터 살인사건')
+	 .setThumbnail('https://i.imgur.com/AfFp7pu.png')
+	 .addFields(
+		 { name: admin.starttime+"시작", value: 'Some value here' },
+		 { name: '\u200B', value: '\u200B' },
+		 { name: 'Inline field title', value: 'Some value here', inline: true },
+		 { name: 'Inline field title', value: 'Some value here', inline: true },
+	 )
+	 .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+	 .setImage('https://i.imgur.com/AfFp7pu.png')
+	 .setTimestamp()
+	 .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+	 const channel = client.channels.cache.get(record);
+await channel.send("15초안에 모두 준비를 마쳐주세요")////특정채널 메시지

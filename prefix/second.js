@@ -37,7 +37,7 @@ module.exports = {
     ///////////
 
 
-if(admin.round == 3 && admin.vpoint == 0){
+if(admin.round == 3 && admin.vpoint == 0 && message.author.id == admin.playerid1){
 	const channel6 = client.channels.cache.get(note1);//추리노트
 	await channel6.send('2차 조사가 시작되었습니다. ```!단서 ???``` 명령어로 남은 단서를 모두 열람 할 수 있습니다!')
   await channel6.send('단서 열람횟수 23개 추가 됨.')
@@ -53,8 +53,8 @@ if(admin.round == 3 && admin.vpoint == 0){
 		player4 : admin.player4,
 		class5 : admin.class5,
 		player5 : admin.player5,
-		class5 : admin.class6,
-		player5 : admin.player6,
+		class6 : admin.class6,
+		player6 : admin.player6,
 		playerid1 : admin.playerid1,
 		playerid2 : admin.playerid2,
 		playerid3 : admin.playerid3,

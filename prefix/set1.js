@@ -1,7 +1,7 @@
 const { createAudioResource, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, AudioPlayerStatus, generateDependencyReport, getVoiceConnection, VoiceConnectionStatus, StreamType } = require('@discordjs/voice');
 const fs = require('node:fs');
 const { Client, GatewayIntentBits, Collection, MembershipScreeningFieldType, ClientUser, User, time, GuildChannel, GuildManager, MessageManager, GuildMemberManager, GuildBanManager, GuildBan, GuildStickerManager, PermissionsBitField, PermissionOverwriteManager, MessageFlagsBitField, GuildMemberRoleManager, GuildMember, MessageReaction } = require('discord.js');
-const { record, playcode, owner, character1, character2, character3, character4, character5, character6, botplay, botstan, guildId, chclue1, chclue2, chclue3, chclue4, chclue5 } = require('../config.json');
+const { record, playcode, owner, character1, character2, character3, character4, character5, character6, botplay, botstan, guildId, chclue1, chclue2, chclue3, chclue4, chclue5, note1 } = require('../config.json');
 const { createReadStream } = require('node:fs');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildBans, GatewayIntentBits.GuildVoiceStates] });
 const wait = require('node:timers/promises').setTimeout;///딜레이 구문
@@ -79,7 +79,7 @@ module.exports = {
     const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
     const clue = JSON.parse(fs.readFileSync(efilePath, "utf-8"));
  
- if(admin.round == 1){
+ if(admin.round == 1 && message.author.id == admin.playerid1){
     try {
     let cluedata = {};
     
@@ -302,6 +302,7 @@ await editms.edit({ content: "준비중입니다. 1/10" })
     })
     await channel4.send('-----------------------------')
     await editms.edit({ content: "준비 완료 되었습니다." })
+    await channel22.send("``!단서 000`` 을 치셔서 연습을 해 보세요 횟수는 차감되지 않습니다. 아주 중요한 단서이니 꼭 쳐보시고 시작하세요!\n 명령어는 탐정님만 사용이 가능합니다. \n의견을 조율받으셔서 명령어를 써 주세요. \n1차 단서 조사갯수는 20개입니다.")
     cluedata = {
 
         dclueid01 : clueid01,

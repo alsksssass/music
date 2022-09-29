@@ -40,7 +40,7 @@ module.exports = {
         console.log('1')
       return message.channel.send('숫자만 입력!');
      } 
-     else if(admin.vpoint > 0) {
+     else if(admin.vpoint > 0 && message.author.id == admin.playerid1) {
         console.log('2')
       message.channel.bulkDelete(1)
       switch(arguments)
