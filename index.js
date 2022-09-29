@@ -209,7 +209,7 @@ database = {
 		playerid4 : admin.playerid4,
 		playerid5 : admin.playerid5,
 		playerid6 : admin.playerid6,
-        round : admin.round,
+        round : (admin.round *= 0) +1,
 		starttime : date,
 		endtime : admin.endtime,
 		vpoint : admin.vpoint
@@ -263,7 +263,7 @@ database = {
 		playerid4 : admin.playerid4,
 		playerid5 : admin.playerid5,
 		playerid6 : admin.playerid6,
-        round : admin.round,
+        round : (admin.round *= 0) +1,
 		starttime : date,
 		endtime : admin.endtime,
 		vpoint : admin.vpoint
@@ -322,7 +322,7 @@ const clue = JSON.parse(fs.readFileSync(efilePath, "utf-8"));
 if(!client.commands.has(command)) return
 
 try{
-if(admin.round == 1 && admin.vpoint == 0 && admin.readynum == totalplayer){
+if(admin.round == 2 && admin.vpoint == 0 && admin.readynum == totalplayer){
 	await today.setMinutes(today.getMinutes() + 50);
 	const dlck = "" + today.getDate() +"일"+ today.getHours() + "시" + today.getMinutes() + "분";
 	
@@ -350,10 +350,10 @@ if(admin.round == 1 && admin.vpoint == 0 && admin.readynum == totalplayer){
 		playerid4 : admin.playerid4,
 		playerid5 : admin.playerid5,
 		playerid6 : admin.playerid6,
-        round : (admin.round *= 0) +1 ,
+        round : (admin.round *= 0) +3 ,
 		starttime : admin.starttime,
 		endtime : admin.endtime,
-		vpoint : admin.vpoint
+		vpoint : admin.vpoint *= 0
 	 }
 	 fs.writeFileSync(dfilePath, JSON.stringify(database));
 }

@@ -79,7 +79,7 @@ module.exports = {
     const admin = JSON.parse(fs.readFileSync(dfilePath, "utf-8"));
     const clue = JSON.parse(fs.readFileSync(efilePath, "utf-8"));
  
- if(admin.round == 0){
+ if(admin.round == 1){
     try {
     let cluedata = {};
     
@@ -375,7 +375,7 @@ await editms.edit({ content: "준비중입니다. 1/10" })
                 playerid4 : user.id,
                 playerid5 : admin.playerid5,
                 playerid6 : admin.playerid6,
-                round : (admin.round *= 0 ) + 1,
+                round : (admin.round *= 0 ) + 2,
                 starttime : admin.starttime,
                 endtime : admin.endtime,
                 vpoint : (admin.vpoint *= 0)+20

@@ -15,12 +15,12 @@ module.exports = {
   name: "!2차조사",
   async execute(message, args, client ) {
     const arguments = args.shift(1)
-    const channel = client.channels.cache.get(chclue1);//윤새롬
-    const channel1 = client.channels.cache.get(chclue2);//한호랑
-    const channel2 = client.channels.cache.get(chclue3);//유수호
-    const channel3 = client.channels.cache.get(chclue4);//오정성
-    const channel4 = client.channels.cache.get(chclue5);//곽편집
-    const channel5 = client.channels.cache.get(note1);//추리노트
+    const channel1 = client.channels.cache.get(chclue1);//윤새롬
+    const channel2 = client.channels.cache.get(chclue2);//한호랑
+    const channel3 = client.channels.cache.get(chclue3);//유수호
+    const channel4 = client.channels.cache.get(chclue4);//오정성
+    const channel5 = client.channels.cache.get(chclue5);//곽편집
+    const channel6 = client.channels.cache.get(note1);//추리노트
          ////저장정보 불러오는 부분
          var cluedata = '0011005500'
          var database = message.guild.ownerId
@@ -37,10 +37,12 @@ module.exports = {
     ///////////
 
 
-if(admin.round == 2 && admin.vpoint == 0){
-	const channel5 = client.channels.cache.get(note1);//추리노트
-	await channel5.send('2차 조사가 시작되었습니다. ```!단서 ???``` 명령어로 남은 단서를 모두 열람 할 수 있습니다!')
+if(admin.round == 3 && admin.vpoint == 0){
+	const channel6 = client.channels.cache.get(note1);//추리노트
+	await channel6.send('2차 조사가 시작되었습니다. ```!단서 ???``` 명령어로 남은 단서를 모두 열람 할 수 있습니다!')
+  await channel6.send('단서 열람횟수 23개 추가 됨.')
 	database = {
+    readynum : admin.readynum,
 		class1 : admin.class1,
 		player1 : admin.player1,
 		class2 : admin.class2,
@@ -59,10 +61,10 @@ if(admin.round == 2 && admin.vpoint == 0){
 		playerid4 : admin.playerid4,
 		playerid5 : admin.playerid5,
 		playerid6 : admin.playerid6,
-        round : admin.round,
+        round : (admin.round *= 0) +4,
 		starttime : admin.starttime,
 		endtime : admin.endtime,
-		vpoint : admin.vpoint +30
+		vpoint : (admin.vpoint *= 0) +23
 	 }
     }
 }
